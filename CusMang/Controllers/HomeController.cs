@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CusMang.Models;
 
 namespace CusMang.Controllers
 {
     public class HomeController : Controller
     {
+        private CusDBEntities db = new CusDBEntities();
+
         public ActionResult Index()
         {
             return View();
