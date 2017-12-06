@@ -13,6 +13,10 @@ namespace CusMang.Controllers
 
         public ActionResult Index()
         {
+
+            //var v = db.客戶資料.ToList();
+            //int i = v.Count;
+
             return View();
         }
 

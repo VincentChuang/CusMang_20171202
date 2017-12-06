@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="37450797c5cb4b708df02408c4e6e908" Name="Diagram1">
-        <EntityTypeShape EntityType="CusDBModel.客戶資料" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CusDBModel.客戶銀行資訊" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CusDBModel.客戶聯絡人" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CusDBModel.客戶資料" Width="1.5" PointX="4.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CusDBModel.客戶銀行資訊" Width="1.5" PointX="6.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CusDBModel.客戶聯絡人" Width="1.5" PointX="1.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="CusDBModel.FK_客戶銀行資訊_客戶資料" ManuallyRouted="false" />
         <AssociationConnector Association="CusDBModel.FK_客戶聯絡人_客戶資料" ManuallyRouted="false" />
       </Diagram>
