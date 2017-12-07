@@ -3,7 +3,8 @@ namespace CusMang.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+    using System.Web.Mvc;
+
     [MetadataType(typeof(客戶資料MetaData))]
     public partial class 客戶資料
     {
@@ -33,7 +34,9 @@ namespace CusMang.Models
         public string 地址 { get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "請輸入正確的電子信箱")]
         [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
+        [Remote("RemoteEmailCheck", "Customer", HttpMethod = "POST", ErrorMessage = "此Email已申請過會員，如忘記密碼可按忘記密碼取回密碼")]
         public string Email { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]

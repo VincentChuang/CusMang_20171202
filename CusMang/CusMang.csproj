@@ -208,6 +208,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CusBankController.cs" />
+    <Compile Include="Controllers\CusContactController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +232,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CusMangDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataType\行動電話Attribute.cs" />
     <Compile Include="Models\EFGeneratePartialClass.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -337,6 +341,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\CusContact\Create.cshtml" />
+    <Content Include="Views\CusContact\Delete.cshtml" />
+    <Content Include="Views\CusContact\Details.cshtml" />
+    <Content Include="Views\CusContact\Edit.cshtml" />
+    <Content Include="Views\CusContact\Index.cshtml" />
+    <Content Include="Views\CusBank\Create.cshtml" />
+    <Content Include="Views\CusBank\Delete.cshtml" />
+    <Content Include="Views\CusBank\Details.cshtml" />
+    <Content Include="Views\CusBank\Edit.cshtml" />
+    <Content Include="Views\CusBank\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
