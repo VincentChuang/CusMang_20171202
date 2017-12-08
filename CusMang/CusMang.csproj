@@ -232,7 +232,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CusMangDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataType\行動電話Attribute.cs" />
     <Compile Include="Models\EFGeneratePartialClass.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -359,6 +358,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\DataType\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
