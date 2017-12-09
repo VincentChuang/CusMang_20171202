@@ -17,15 +17,14 @@ namespace CusMang.Controllers
         // GET: CusContact
         public ActionResult Index()
         {
-            var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
+            var 客戶聯絡人 = db.客戶聯絡人.Where(x => x.是否已刪除 == false).Include(客 => 客.客戶資料);
             return View(客戶聯絡人.ToList());
         }
 
         // GET: CusContact/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
@@ -97,13 +96,11 @@ namespace CusMang.Controllers
         // GET: CusContact/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            if (客戶聯絡人 == null)
-            {
+            if (客戶聯絡人 == null) {
                 return HttpNotFound();
             }
             return View(客戶聯絡人);
@@ -115,8 +112,9 @@ namespace CusMang.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            db.客戶聯絡人.Remove(客戶聯絡人);
+            客戶聯絡人.是否已刪除 = true;     //db.客戶聯絡人.Remove(客戶聯絡人);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

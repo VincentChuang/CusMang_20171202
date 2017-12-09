@@ -17,7 +17,8 @@ namespace CusMang.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View(db.客戶資料.ToList());
+            List<客戶資料> list = db.客戶資料.Where(x => x.是否已刪除 == false).ToList();
+            return View(list);
         }
 
         // GET: Customer/Details/5
@@ -28,8 +29,7 @@ namespace CusMang.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            if (客戶資料 == null)
-            {
+            if (客戶資料 == null) {
                 return HttpNotFound();
             }
             return View(客戶資料);
@@ -48,13 +48,11 @@ namespace CusMang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,客戶分類,是否已刪除")] 客戶資料 客戶資料)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 db.客戶資料.Add(客戶資料);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(客戶資料);
         }
 
@@ -104,13 +102,12 @@ namespace CusMang.Controllers
             return View(客戶資料);
         }
 
-        // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
+            客戶資料.是否已刪除 = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -125,7 +122,7 @@ namespace CusMang.Controllers
         }
 
 
-
+        #region 遠端Email驗證-RemoteEmailCheck
         //public JsonResult CheckUserName(string userName) {
         //    bool isValidate = false;
         //    if (Url.IsLocalUrl(Request.Url.AbsoluteUri)) {
@@ -140,14 +137,13 @@ namespace CusMang.Controllers
         //    // Remote 驗證是使用 Get 因此要開放
         //    return Json(isValidate, JsonRequestBehavior.AllowGet);
         //}
-
         public JsonResult RemoteEmailCheck(string email) {
             bool isValidate = false;
             isValidate = db.客戶資料.Where(x => x.Email == email).Any();
             // Remote 驗證是使用 Get 因此要開放
             return Json(isValidate, JsonRequestBehavior.AllowGet);
         }
-
+        #endregion
 
 
     }
