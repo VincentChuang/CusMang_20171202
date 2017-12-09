@@ -17,7 +17,7 @@ namespace CusMang.Models.Custom_DataType
         //打 ov + TAB + 空白鍵 ---> 選擇 可 override function
         public override bool IsValid(object value) {
             if (value == null)
-                return true;
+                return true;    //DataTypeAttribute驗證：true代表失敗,false代表無錯誤
             bool bln = _regex.IsMatch(value.ToString());
             return bln;
         }

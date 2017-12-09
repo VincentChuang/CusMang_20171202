@@ -14,14 +14,24 @@ namespace CusMang.Controllers
     {
         private CusDBEntities db = new CusDBEntities();
 
-        // GET: CusContact
-        public ActionResult Index()
-        {
-            var 客戶聯絡人 = db.客戶聯絡人.Where(x => x.是否已刪除 == false).Include(客 => 客.客戶資料);
+        #region 列表頁
+        public ActionResult Index() {
+            var 客戶聯絡人 = db.客戶聯絡人
+                .Where(x => x.是否已刪除 == false)
+                .Include(x => x.客戶資料);
             return View(客戶聯絡人.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string jobTitle) {
+            var 客戶聯絡人 = db.客戶聯絡人
+                .Where(x => x.是否已刪除 == false)
+                .Where(x => x.職稱 == jobTitle)
+                .Include(x => x.客戶資料);
+            return View(客戶聯絡人.ToList());
+        }
+        #endregion
 
-        // GET: CusContact/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null) {
@@ -35,7 +45,7 @@ namespace CusMang.Controllers
             return View(客戶聯絡人);
         }
 
-        // GET: CusContact/Create
+
         public ActionResult Create()
         {
             ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
