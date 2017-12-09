@@ -340,7 +340,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
@@ -355,6 +354,7 @@
     <Content Include="Views\CusBank\Details.cshtml" />
     <Content Include="Views\CusBank\Edit.cshtml" />
     <Content Include="Views\CusBank\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

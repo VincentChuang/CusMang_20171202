@@ -140,6 +140,7 @@ namespace CusMang.Controllers
         public JsonResult RemoteEmailCheck(string email) {
             bool isValidate = false;
             isValidate = db.客戶資料.Where(x => x.Email == email).Any();
+            isValidate = !isValidate;
             // Remote 驗證是使用 Get 因此要開放
             return Json(isValidate, JsonRequestBehavior.AllowGet);
         }
