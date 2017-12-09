@@ -14,10 +14,17 @@ namespace CusMang.Controllers
     {
         private CusDBEntities db = new CusDBEntities();
 
-        // GET: Customer
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             List<客戶資料> list = db.客戶資料.Where(x => x.是否已刪除 == false).ToList();
+            return View(list);
+        }
+        [HttpPost]
+        public ActionResult Index(string CusName) {
+            List<客戶資料> list = db.客戶資料
+                .Where(x => x.客戶名稱.Contains(CusName))
+                .Where(x => x.是否已刪除 == false).ToList();
+            //寫入 ViewBag 資料
+            ViewBag.CusName = CusName;
             return View(list);
         }
 
