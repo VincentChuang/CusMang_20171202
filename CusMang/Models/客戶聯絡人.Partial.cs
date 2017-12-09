@@ -1,9 +1,10 @@
 namespace CusMang.Models
 {
+    using Custom_DataType;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     [MetadataType(typeof(客戶聯絡人MetaData))]
     public partial class 客戶聯絡人
     {
@@ -29,6 +30,7 @@ namespace CusMang.Models
         public string Email { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [自訂行動電話驗證(ErrorMessage = "電話格式錯誤，應為『0911-111111』")]
         public string 手機 { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
