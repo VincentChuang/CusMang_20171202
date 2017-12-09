@@ -12,10 +12,12 @@
     @Html.ActionLink("Create New", "Create")
 
     <br/>
-    @{ 
-        string sCusName = ViewBag.CusName;
-    }
-    查詢 %公司名稱：@Html.TextBox("CusName", sCusName)
+        @{  string sCusName = ViewBag.CusName; }
+        %公司名稱：@Html.TextBox("CusName", sCusName)
+    <br/>
+        客戶分類：
+        @Html.DropDownList("CusType",(IEnumerable<SelectListItem>)ViewBag.CusTypes)
+    <br/>
     <input type="submit" value="查詢" class="btn btn-default" />
 
 </p>

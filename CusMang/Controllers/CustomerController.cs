@@ -15,17 +15,53 @@ namespace CusMang.Controllers
         private CusDBEntities db = new CusDBEntities();
 
         public ActionResult Index() {
+            
+            #region 客戶分類-下拉選單
+            List<SelectListItem> cusTypeItems = new List<SelectListItem>();
+            cusTypeItems.Add(new SelectListItem() { Text = "All", Value = "All" });
+            List<string> s客戶分類 = db.客戶資料
+                .Where(x => x.是否已刪除 == false)
+                .Select(x => x.客戶分類)
+                .Distinct().ToList();
+            if (s客戶分類 != null) {
+                foreach(var s in s客戶分類) {
+                    cusTypeItems.Add(new SelectListItem() { Text = s, Value = s });
+                }
+            }
+            ViewBag.CusTypes = cusTypeItems;
+            #endregion
+
             List<客戶資料> list = db.客戶資料.Where(x => x.是否已刪除 == false).ToList();
             return View(list);
         }
         [HttpPost]
-        public ActionResult Index(string CusName) {
-            List<客戶資料> list = db.客戶資料
+        public ActionResult Index(string CusName, string CusType) {
+            var list = db.客戶資料
                 .Where(x => x.客戶名稱.Contains(CusName))
-                .Where(x => x.是否已刪除 == false).ToList();
-            //寫入 ViewBag 資料
+                .Where(x => x.是否已刪除 == false);
+            if (CusType != null && CusType != "All")
+                list = list.Where(x => x.客戶分類 == CusType);
+            
+            //寫入 ViewBag 查詢客戶名稱
             ViewBag.CusName = CusName;
-            return View(list);
+
+            #region 客戶分類-下拉選單
+            List<SelectListItem> cusTypeItems = new List<SelectListItem>();
+            cusTypeItems.Add(new SelectListItem() { Text = "All", Value = "All" });
+            List<string> s客戶分類 = db.客戶資料
+                .Where(x => x.是否已刪除 == false)
+                .Select(x => x.客戶分類)
+                .Distinct().ToList();
+            if (s客戶分類 != null) {
+                foreach (var s in s客戶分類) {
+                    cusTypeItems.Add(new SelectListItem() { Text = s, Value = s });
+                }
+            }
+            ViewBag.CusTypes = cusTypeItems;
+            ViewBag.CusType = CusType;
+            #endregion
+
+            return View(list.ToList());
         }
 
         // GET: Customer/Details/5
